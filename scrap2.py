@@ -95,14 +95,17 @@ while gatillo < 3:
     #         pass
 
     # Aqui busco la interacción de las paguinas
+    
+    
     try:
-        boton2 = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH, "//ul[@class='pager-0-2-617 desktopPager-0-2-615']/li[last()]/a")))
-        actions = ActionChains(driver)
-        actions.move_to_element(boton2).click().perform()
-    except NoSuchElementException:
-        print("No se encontro el boton2")
+        li_boton2 = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "btn-0-2-618 next-0-2-620")))
+        svg_boton2 = li_boton2.find_element(By.TAG_NAME, "svg").click()
         sleep(5)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        sleep(5)  # espera 5 segundos para que cargue la página siguiente
+    except NoSuchElementException:
+        print("No se encontró el botón 2")
+        break
 
 
 print("Raspado terminado")
