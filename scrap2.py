@@ -57,49 +57,49 @@ gatillo = 0
 while gatillo < 3:
     gatillo +=1
 
-    # for anuncio in anuncios:
-    #     try:
-    #         fecha = anuncio.find_element(By.CLASS_NAME, 'date-0-2-567').text
-    #         print('Fecha: ' + str(fecha))
-    #     except:
-    #         pass
-    #     try:
-    #         puesto = anuncio.find_element(By.CLASS_NAME, 'longWord-0-2-575').text
-    #         print('Puesto: ' + str(puesto))
-    #     except Exception as err:
-    #         print(err)
+    for anuncio in anuncios:
+        try:
+            fecha = anuncio.find_element(By.CLASS_NAME, 'date-0-2-568').text
+            print('Fecha: ' + str(fecha))
+        except:
+            pass
+        try:
+            puesto = anuncio.find_element(By.CLASS_NAME, 'longWord-0-2-576').text
+            print('Puesto: ' + str(puesto))
+        except Exception as err:
+            print(err)
 
-    #     try:
-    #         empresa = anuncio.find_element(By.CLASS_NAME, "fresnel-greaterThanOrEqual-sm").text
-    #         print("EMPRESA: " + str(empresa))
-    #     except:
-    #         print('EMPRESA: ', 'Empresa Confidencial')
+        try:
+            empresa = anuncio.find_element(By.CLASS_NAME, "fresnel-greaterThanOrEqual-sm").text
+            print("EMPRESA: " + str(empresa))
+        except:
+            print('EMPRESA: ', 'Empresa Confidencial')
 
-    #     try:
-    #         sueldo = anuncio.find_element(By.CLASS_NAME, "salary-0-2-559").text
-    #         print("SUELDO: " + str(sueldo))
-    #     except Exception as err:
-    #         print(err)
+        try:
+            sueldo = anuncio.find_element(By.CLASS_NAME, "salary-0-2-568").text
+            print("SUELDO: " + str(sueldo))
+        except Exception as err:
+            print(err)
 
 
-    #     try:
-    #         ciudad = anuncio.find_element(By.CLASS_NAME, "zonesLinks-0-2-601").text
-    #         print("CIUDAD: " + str(ciudad))
-    #     except:
-    #         pass
+        try:
+            ciudad = anuncio.find_element(By.CLASS_NAME, "zonesLinks-0-2-602").text
+            print("CIUDAD: " + str(ciudad))
+        except:
+            pass
 
-    #     try:
-    #         url_busqueda = anuncio.find_element(By.CLASS_NAME, 'jobcard-0-2-558').get_attribute('href')
-    #         print("URL_BUSQUEDA: " + str(url_busqueda))
-    #     except:
-    #         pass
+        try:
+            url_busqueda = anuncio.find_element(By.CLASS_NAME, 'jobcard-0-2-559').get_attribute('href')
+            print("URL_BUSQUEDA: " + str(url_busqueda))
+        except:
+            pass
 
     # Aqui busco la interacción de las paguinas
-    
-    
     try:
-        li_boton2 = WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.CLASS_NAME, "btn-0-2-618 next-0-2-620")))
-        svg_boton2 = li_boton2.find_element(By.TAG_NAME, "svg").click()
+        div = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, "flex-0-2-4")))
+        ul = WebDriverWait(div, 20).until(EC.presence_of_element_located((By.TAG_NAME, "ul")))
+        li_boton2 = WebDriverWait(ul, 20).until(EC.presence_of_element_located((By.XPATH, "//li[@class='btn-0-2-618 next-0-2-620'][@tabindex='0']")))
+        svg_boton2 = WebDriverWait(li_boton2, 20).until(EC.presence_of_element_located((By.TAG_NAME, "svg"))).click()
         sleep(5)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         sleep(5)  # espera 5 segundos para que cargue la página siguiente
