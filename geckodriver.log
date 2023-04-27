@@ -15757,3 +15757,24 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 console.error: ({})
 DevTools listening on ws://127.0.0.1:19687/devtools/browser/2dc2c557-fbc8-4b1e-9bea-766314f75b22
 JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+1682377019024	geckodriver	INFO	Listening on 127.0.0.1:10146
+1682377022067	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--headless" "--disable-extensions" "--disable-gpu" "--no-sandbox" "--remote-debugging-port" "10147" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Rdiaz\\AppData\\Local\\Temp\\rust_mozprofilegFDUZm"
+*** You are running in headless mode.
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1682377023099	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1682377023106	Marionette	INFO	Listening on port 10156
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+Read port: 10156
+WebDriver BiDi listening on ws://127.0.0.1:10147
+1682377023303	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Rdiaz\\AppData\\Local\\Temp\\rust_mozprofilegFDUZm\\search.json.mozlz4", (void 0)))
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+console.error: ({})
+DevTools listening on ws://127.0.0.1:10147/devtools/browser/4f18b7d0-66ad-4a35-9da4-30b40e2d7dd6
+JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
+1682558203255	geckodriver	INFO	Listening on 127.0.0.1:5792
+1682558206325	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-extensions" "--disable-gpu" "--no-sandbox" "--remote-debugging-port" "5793" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Rdiaz\\AppData\\Local\\Temp\\rust_mozprofilehgp4oY"
