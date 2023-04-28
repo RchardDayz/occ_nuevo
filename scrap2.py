@@ -25,7 +25,6 @@ options = webdriver.FirefoxOptions()
 options.add_argument('--disable-extensions')
 options.add_argument('--disable-gpu')
 options.add_argument('--no-sandbox')
-# options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3')
 options.binary_location = r'C:\Program Files\Mozilla Firefox\firefox.exe'
 
 # CREAR NAVEGADOR ROBOT ABRIENDO FIREFOX
@@ -67,7 +66,7 @@ while gatillo < 2:
         
         fecha = ''
         try:
-            fecha = WebDriverWait(anuncio, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'date-0-2-570'))).text
+            fecha = WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'date-0-2-570'))).text
             print('Fecha: ' + str(fecha))
         except Exception as err:
             print(err)
@@ -75,7 +74,7 @@ while gatillo < 2:
             
         puesto = ''
         try:
-            puesto =  WebDriverWait(anuncio, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'longWord-0-2-578'))).text
+            puesto =  WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'longWord-0-2-578'))).text
             print('Puesto: ' + str(puesto))
         except Exception as err:
             print(err)
@@ -83,14 +82,14 @@ while gatillo < 2:
 
         empresa = ''
         try:
-            empresa = WebDriverWait(anuncio, 20).until(EC.presence_of_element_located((By.CLASS_NAME, "fresnel-greaterThanOrEqual-sm"))).text
+            empresa = WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "fresnel-greaterThanOrEqual-sm"))).text
             print("EMPRESA: " + str(empresa))
         except:
             print('EMPRESA: ', 'Empresa Confidencial')
 
         sueldo = ''
         try:
-            sueldo =  WebDriverWait(anuncio, 20).until(EC.presence_of_element_located((By.CLASS_NAME, "salary-0-2-562"))).text
+            sueldo =  WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "salary-0-2-562"))).text
             print("SUELDO: " + str(sueldo))
         except Exception as err:
             print(err)
@@ -98,7 +97,7 @@ while gatillo < 2:
 
         ciudad = ''
         try:
-            ciudad =  WebDriverWait(anuncio, 20).until(EC.presence_of_element_located((By.CLASS_NAME, "zonesLinks-0-2-604"))).text
+            ciudad =  WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "zonesLinks-0-2-604"))).text
             print("CIUDAD: " + str(ciudad))
         except Exception as err:
             print(err)
@@ -106,7 +105,7 @@ while gatillo < 2:
 
         url_busqueda = ''
         try:
-            url_busqueda =  WebDriverWait(anuncio, 20).until(EC.presence_of_element_located((By.CLASS_NAME, 'jobcard-0-2-561'))).get_attribute('href')
+            url_busqueda =  WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'jobcard-0-2-561'))).get_attribute('href')
             print("URL_BUSQUEDA: " + str(url_busqueda))
         except Exception as err:
             print(err)
