@@ -16225,3 +16225,17 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 DevTools listening on ws://127.0.0.1:33063/devtools/browser/80749758-437b-4d8a-9c8d-b3e0d1c2a155
 JavaScript error: , line 0: NS_ERROR_NOT_AVAILABLE
 1682650620044	geckodriver	INFO	Listening on 127.0.0.1:33579
+1682650623110	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--disable-extensions" "--disable-gpu" "--no-sandbox" "--remote-debugging-port" "33580" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\Rdiaz\\AppData\\Local\\Temp\\rust_mozprofileNHyWlj"
+console.warn: services.settings: Ignoring preference override of remote settings server
+console.warn: services.settings: Allow by setting MOZ_REMOTE_SETTINGS_DEVTOOLS=1 in the environment
+1682650623929	Marionette	INFO	Marionette enabled
+Dynamically enable window occlusion 0
+1682650623936	Marionette	INFO	Listening on port 33587
+console.error: "Warning: unrecognized command line flag -disable-extensions\n"
+console.error: "Warning: unrecognized command line flag -no-sandbox\n"
+Read port: 33587
+WebDriver BiDi listening on ws://127.0.0.1:33580
+1682650624183	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Rdiaz\\AppData\\Local\\Temp\\rust_mozprofileNHyWlj\\search.json.mozlz4", (void 0)))
+[ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:33580/devtools/browser/19c17118-b21f-45c2-9e23-c742d7b94539
