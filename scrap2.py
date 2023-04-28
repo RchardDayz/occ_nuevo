@@ -32,9 +32,11 @@ driver = webdriver.Firefox(executable_path="geckodriver", options=options)
 driver.delete_all_cookies()
 
 #Se establece la url
-url = "https://www.occ.com.mx/empleos/"
+url = "https://www.occ.com.mx/empleos/?page=1"
 driver.get(url)
 sleep(5)
+
+contador_paguina= 1
 
 #Se extrae el total de anuncios
 Total_anuncios = driver.find_element(By.XPATH, '//p[@class="text-0-2-82 small-0-2-90 midEmphasis-0-2-104"]').text
@@ -44,7 +46,7 @@ driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 sleep(2)
 
 #Se establece el total de paguinas
-total_paguinas = driver.find_element(By.CSS_SELECTOR, "li.li-0-2-625:nth-child(4)").text
+total_paguinas = driver.find_element(By.XPATH, '//li[@class="li-0-2-627"]').text
 print("Total de paguinas: " + str(total_paguinas))
 
 #Se establece el total de anuncios en la paguina
@@ -52,61 +54,75 @@ anuncios = driver.find_elements(By.XPATH, '//*[starts-with(@id,"jobcard")]')
 print("Anuncios encontrados: " + str(len(anuncios)))
 sleep(5)
 
+numero_random = random.randint(5, 20)
+
 detetctor_linea = 0
 gatillo = 0
-while gatillo < 3:
+while gatillo < 2:
     gatillo +=1
+    contador_paguina +=1
 
     for anuncio in anuncios:
+        
+        fecha = ''
         try:
-            fecha = anuncio.find_element(By.CLASS_NAME, 'date-0-2-568').text
+            fecha = WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'date-0-2-570'))).text
             print('Fecha: ' + str(fecha))
-        except:
-            pass
+        except Exception as err:
+            print(err)
+            break
+            
+        puesto = ''
         try:
-            puesto = anuncio.find_element(By.CLASS_NAME, 'longWord-0-2-576').text
+            puesto =  WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'longWord-0-2-578'))).text
             print('Puesto: ' + str(puesto))
         except Exception as err:
             print(err)
+            break
 
+        empresa = ''
         try:
-            empresa = anuncio.find_element(By.CLASS_NAME, "fresnel-greaterThanOrEqual-sm").text
+            empresa = WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "fresnel-greaterThanOrEqual-sm"))).text
             print("EMPRESA: " + str(empresa))
         except:
             print('EMPRESA: ', 'Empresa Confidencial')
 
+        sueldo = ''
         try:
-            sueldo = anuncio.find_element(By.CLASS_NAME, "salary-0-2-568").text
+            sueldo =  WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "salary-0-2-562"))).text
             print("SUELDO: " + str(sueldo))
         except Exception as err:
             print(err)
+            break
 
-
+        ciudad = ''
         try:
-            ciudad = anuncio.find_element(By.CLASS_NAME, "zonesLinks-0-2-602").text
+            ciudad =  WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, "zonesLinks-0-2-604"))).text
             print("CIUDAD: " + str(ciudad))
-        except:
-            pass
+        except Exception as err:
+            print(err)
+            break
 
+        url_busqueda = ''
         try:
-            url_busqueda = anuncio.find_element(By.CLASS_NAME, 'jobcard-0-2-559').get_attribute('href')
+            url_busqueda =  WebDriverWait(anuncio, 10).until(EC.presence_of_element_located((By.CLASS_NAME, 'jobcard-0-2-561'))).get_attribute('href')
             print("URL_BUSQUEDA: " + str(url_busqueda))
-        except:
-            pass
+        except Exception as err:
+            print(err)
+            break
 
-    # Aqui busco la interacción de las paguinas
+    # Aqui busco la iteracción de las paguinas
     try:
-        div = WebDriverWait(driver, 20).until(EC.presence_of_element_located((By.CLASS_NAME, "flex-0-2-4")))
-        ul = WebDriverWait(div, 20).until(EC.presence_of_element_located((By.TAG_NAME, "ul")))
-        li_boton2 = WebDriverWait(ul, 20).until(EC.presence_of_element_located((By.XPATH, "//li[@class='btn-0-2-618 next-0-2-620'][@tabindex='0']")))
-        svg_boton2 = WebDriverWait(li_boton2, 20).until(EC.presence_of_element_located((By.TAG_NAME, "svg"))).click()
-        sleep(5)
+        paguina_nueva= str(url).replace("?page=1", "?page=" + str(contador_paguina))
+        print(paguina_nueva)
+        driver.get(paguina_nueva)
+        sleep(numero_random)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        sleep(5)  # espera 5 segundos para que cargue la página siguiente
-    except NoSuchElementException:
-        print("No se encontró el botón 2")
+        sleep(numero_random)
+    except Exception as err:
+        print(err)
         break
-
+      
 
 print("Raspado terminado")
 
