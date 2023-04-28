@@ -16222,3 +16222,4 @@ WebDriver BiDi listening on ws://127.0.0.1:33063
 1682648992252	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Rdiaz\\AppData\\Local\\Temp\\rust_mozprofiler4aHnw\\search.json.mozlz4", (void 0)))
 [ERROR glean_core] Error setting metrics feature config: Json(Error("EOF while parsing a value", line: 1, column: 0))
+DevTools listening on ws://127.0.0.1:33063/devtools/browser/80749758-437b-4d8a-9c8d-b3e0d1c2a155
