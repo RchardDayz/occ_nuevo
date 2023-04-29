@@ -13,6 +13,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
 
 
+
 #LIMPIANDO PANTALLA
 os.system("cls")
 #os.system("del occtest.csv")
@@ -33,15 +34,16 @@ driver.delete_all_cookies()
 
 #Se establece la url
 url = "https://www.occ.com.mx/empleos/?page=1"
+# url = "file:///C:/Users/Rdiaz/OneDrive/RICARDO%20DIAZ/CURSO%20PYTHON/OCC_ANUNCIOS/OCCsolohtml.htm"
 driver.get(url)
 sleep(5)
 
-contador_paguina= 1
 
 #Se extrae el total de anuncios
 Total_anuncios = driver.find_element(By.XPATH, '//p[@class="text-0-2-82 small-0-2-90 midEmphasis-0-2-104"]').text
 print("Total de Anuncios en México: " + (Total_anuncios))
 
+#se baja al final de paguina
 driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 sleep(2)
 
@@ -54,9 +56,15 @@ anuncios = driver.find_elements(By.XPATH, '//*[starts-with(@id,"jobcard")]')
 print("Anuncios encontrados: " + str(len(anuncios)))
 sleep(5)
 
+#Se establece el un rango de tiempo para los sleep
 numero_random = random.randint(5, 20)
 
+#El contador es para la iteraccion de las paguinas
+contador_paguina= 1
+
+#El detector es para escribir la extraccion en el csv 
 detetctor_linea = 0
+
 gatillo = 0
 while gatillo < 2:
     gatillo +=1
@@ -116,7 +124,7 @@ while gatillo < 2:
         paguina_nueva= str(url).replace("?page=1", "?page=" + str(contador_paguina))
         print(paguina_nueva)
         driver.get(paguina_nueva)
-        sleep(numero_random)
+        sleep(30)
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         sleep(numero_random)
     except Exception as err:
